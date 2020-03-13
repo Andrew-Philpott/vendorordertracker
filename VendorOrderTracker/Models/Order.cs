@@ -26,6 +26,7 @@ namespace VendorOrderTracker.Models
       Description = description;
       Vendor vendor = Vendor.Find(vendorId);
       Price = (vendor.PriceForGood * BakedGood);
+      _orders.Add(this);
     }
     public static List<Order> GetAllOrders()
     {

@@ -6,7 +6,37 @@
 
 ## Description
 
-## RESTful Http Routes
+## Specs
+
+- _Spec: Vendor constructor should be able to correctly make a vendor object._
+
+  - Input: new Vendor()
+  - Output: Vendor
+
+- _Spec: Order constructor should be able to correctly make an order object._
+
+  - Input: new Order()
+  - Output: Order
+
+- _Spec: The application should inform the user that there are no vendors if none have been created._
+
+  - Input:
+  - Output: You don't have any vendors yet
+
+- _Spec: The application should return to the home page when a vendor object has been created_
+
+  - Input: Create vendor object via new page
+  - Output: Home page
+
+- _Spec: The application should inform the user that no orders have been placed with a vendor if an order for that vendor doesnt exist._
+
+  - Input: Vendor Andrew Philpott
+  - Output: No orders have been placed yet with Andrew Philpott
+
+- _Spec: The application should return to the vendor when an order has been placed._
+
+  - Input: Vendor Andrew Philott new order()
+  - Output: Andrew Philpott with order listed.
 
 ## Setup/Installation Requirements
 
