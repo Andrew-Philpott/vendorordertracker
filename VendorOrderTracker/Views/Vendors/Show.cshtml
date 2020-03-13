@@ -4,9 +4,10 @@
 
 @if (Model.GetOrders().Count == 0) {
   <h2>No orders have been placed yet with @Model.Name</h2>
-  <a href='/vendors/@Model.Id/orders/new'></a>
+  <a href='/vendors/@Model.Id/delete'>Delete Vendor</a>
 } else {
   <h1>@Model.Name</h1>
+  <a href='/vendors/@Model.Id/delete'>Delete Vendor</a>
 @foreach (Order order in Model.GetOrders())
 {
 <div class="vendor-order-container">

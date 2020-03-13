@@ -32,11 +32,24 @@ namespace VendorOrderTracker.Controllers
       return View(model);
     }
 
-    [HttpGet("/orders/{orderId}/delete")]
-    public ActionResult Delete(int orderId)
-    {
-      Order.Delete(orderId);
-      return RedirectToAction("Index");
-    }
+    // [HttpGet("/orders/{orderId}/delete")]
+    // public ActionResult Delete(int orderId)
+    // {
+    //   Order.Delete(orderId);
+    //   List<Vendor> vendors = Vendor.GetAllVendors();
+    //   for (int i = 0; i < vendors.Count; i++)
+    //   {
+    //     List<Order> orders = vendors[i].GetOrders();
+
+    //     for (int j = 0; j < orders.Count)
+    //     {
+    //       if (orders[j].Id == orderId)
+    //       {
+    //         vendors[i].DeleteOrder(orderId);
+    //       }
+    //     }
+    //     return RedirectToAction("Index");
+    //   }
+    // }
   }
 }

@@ -34,12 +34,27 @@ namespace VendorOrderTracker.Controllers
     }
 
     [HttpPost("/vendors/{vendorId}/orders")]
-    public ActionResult Create(int vendorId, string title, string description, params string[] list)
+    public ActionResult Create(int vendorId, string title, string description, int bakedGood)
     {
-      Order order = new Order(title, description, list);
+      Order order = new Order(vendorId, title, description, bakedGood);
       Vendor vendor = Vendor.Find(vendorId);
       vendor.AddOrder(order);
       return RedirectToAction("Show");
+    }
+    [HttpGet("/vendors/{vendorId}/delete")]
+    public ActionResult Delete(int id)
+    {
+      Vendor vendor = Vendor.Find(id);
+      List<Order> orders = Order.GetAllOrders();
+      for (int i = 0; i < orders.Count; i++)
+      {
+        if (orders[i].VendorId == id)
+        {
+          orders.Remove(orders[i]);
+        }
+      }
+      Vendor.GetAllVendors().Remove(vendor);
+      return RedirectToAction("Index");
     }
 
     [HttpGet("/vendors/{vendorId}/orders/{orderId}/delete")]
