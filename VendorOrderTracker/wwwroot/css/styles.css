@@ -1,0 +1,9 @@
+.vendor-container {
+  width: 100%;
+  border: 2px solid red;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+}
