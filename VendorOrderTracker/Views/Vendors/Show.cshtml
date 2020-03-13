@@ -2,8 +2,13 @@
 
 @{ Layout = "_Layout"; }
 
+@if (Model.GetOrders().Count == 0) {
+  <h2>No orders have been placed yet.</h2>
+  <a href='/vendors/@Model.Id/orders/new'></a>
+}
+
 <ol>
-@foreach (Order order in @Model.GetOrders())
+@foreach (Order order in Model.GetOrders())
 {
   <li><a href='/vendors/@Model.Id/orders/@order.Id'>@order.Description</a></li>
 }

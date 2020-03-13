@@ -10,17 +10,17 @@
 <form action="/vendors/@Model.Id/orders" method="post">
   <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
   <div class="form-group">
-    <label for="title"></label>
+    <label for="title">Title: </label>
     <input id="title" name="title" type="text">
   </div>
   <div class="form-group">
-    <label for="description"></label>
+    <label for="description">Description: </label>
     <input id="description" name="description" type="text">
   </div>
 @foreach (BakedGood bakedGood in Model.BakedGoods)
 {
   <div class="form-group">
-    <label for="@bakedGood.GetType().Name"></label>
+    <label for="@bakedGood.GetType().Name"># of @bakedGood.GetType().Name<span>s</span>: </label>
     <input id="@bakedGood.GetType().Name" name="@bakedGood.GetType().Name" type="text">
   </div>
 }

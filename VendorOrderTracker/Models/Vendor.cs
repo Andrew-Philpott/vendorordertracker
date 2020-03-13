@@ -44,6 +44,7 @@ namespace VendorOrderTracker.Models
         default:
           break;
       }
+      _vendors.Add(this);
       // string[] bakedGoodsItems = description.Split(",");
 
 
@@ -95,6 +96,10 @@ namespace VendorOrderTracker.Models
     public static List<Vendor> GetAllVendors()
     {
       return _vendors;
+    }
+    public static Vendor Find(int id)
+    {
+      return _vendors.Find(x => x.Id == id);
     }
     public List<Order> GetOrders()
     {

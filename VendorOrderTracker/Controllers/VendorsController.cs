@@ -23,6 +23,13 @@ namespace VendorOrderTracker.Controllers
     public ActionResult Create(string name, string description)
     {
       Vendor vendor = new Vendor(name, description);
+      return RedirectToAction("Index");
+    }
+
+    [HttpGet("/vendors/{id}")]
+    public ActionResult Show(int id)
+    {
+      Vendor vendor = Vendor.Find(id);
       return View(vendor);
     }
   }
