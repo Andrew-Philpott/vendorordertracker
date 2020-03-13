@@ -1,6 +1,23 @@
 .vendor-container {
   width: 100%;
   border: 2px solid red;
+  position: relative;
+}
+.vendor-container a {
+  width: 20%;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+}
+.vendor-order-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 2px solid red;
+}
+.vendor-order-container h2,
+a {
+  margin-right: 1em;
 }
 .links {
   display: flex;

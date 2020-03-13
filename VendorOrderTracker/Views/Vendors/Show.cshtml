@@ -3,16 +3,20 @@
 @{ Layout = "_Layout"; }
 
 @if (Model.GetOrders().Count == 0) {
-  <h2>No orders have been placed yet.</h2>
+  <h2>No orders have been placed yet with @Model.Name</h2>
   <a href='/vendors/@Model.Id/orders/new'></a>
-}
-
-<ol>
+} else {
+  <h1>@Model.Name</h1>
 @foreach (Order order in Model.GetOrders())
 {
-  <li><a href='/vendors/@Model.Id/orders/@order.Id'>@order.Description</a></li>
+<div class="vendor-order-container">
+  <h2>@order.Title</h2>
+  <h2>@order.Date</h2>
+  <h2><span>$</span>@order.Price</h2>
+  <a href='/vendors/@Model.Id/orders/@order.Id'>See Details</a>
+</div>
 }
-</ol>
+}
 
 <div class="links">
   <a href='/vendors/@Model.Id/orders/new'>Add Order</a>

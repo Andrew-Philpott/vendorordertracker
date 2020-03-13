@@ -1,16 +1,15 @@
-@using VendorOrderTracker.Models; 
+@using VendorOrderTracker.Models; @{ Layout = "_Layout"; }
 
-@{ Layout = "_Layout"; }
-
-
-<h2>@Model["vendor"].Name</h2>
-<h1>Order details:</h1>
-<h3>Title: @Model["order"].Title</h3>
-<h3>Date: @Model["order"].Date</h3>
-<h3>Description: @Model["order"].Title</h3>
-<h3>Price: @Model["order"].Price</h3>
+<div id="order-details">
+  <h2>@Model["vendor"].Name</h2>
+  <h2>Order details:</h2>
+  <h3>Title: @Model["order"].Title</h3>
+  <h3>Date: @Model["order"].Date</h3>
+  <h3>Description: @Model["order"].Title</h3>
+  <h3>Price: @Model["order"].Price</h3>
+</div>
 
 <div class="links">
   <a href='/vendors/@Model["vendor"].Id/orders/new'>Add Order</a>
-  <a href='/vendors'>View Vendors</a>
+  <a href="/vendors">View Vendors</a>
 </div>
