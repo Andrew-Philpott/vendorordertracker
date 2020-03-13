@@ -6,7 +6,7 @@
   <h1>@Model.Name</h1>
 </div>
 
-<h1>Add order</h1>
+<h1>Place order</h1>
 <form action="/vendors/@Model.Id/orders" method="post">
   <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
   <div class="form-group">
@@ -19,6 +19,8 @@
   </div>
 @foreach (BakedGood bakedGood in Model.BakedGoods)
 {
+  int i = 0;
+  string bakedGoodString = "bakedGood" + i;
   <div class="form-group">
     <label for="@bakedGood.GetType().Name"># of @bakedGood.GetType().Name<span>s</span>: </label>
     <input id="@bakedGood.GetType().Name" name="@bakedGood.GetType().Name" type="text">

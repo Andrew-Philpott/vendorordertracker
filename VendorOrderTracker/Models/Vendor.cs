@@ -92,7 +92,10 @@ namespace VendorOrderTracker.Models
     //   return _pastries[randomNumber];
     // }
 
-
+    public Order GetOrder(int id)
+    {
+      return _orders.Find(x => x.Id == id);
+    }
     public static List<Vendor> GetAllVendors()
     {
       return _vendors;

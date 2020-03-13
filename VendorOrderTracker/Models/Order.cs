@@ -11,13 +11,13 @@ namespace VendorOrderTracker.Models
     public int Id { get; }
     public string Title { get; set; }
     public string Description { get; set; }
-    public double Price { get; set; }
+    public double Price { get; set; } = 0;
     public DateTime Date { get; set; }
     public Vendor Vendor { get; set; }
 
     // Dictionary<string, string> bakedGoods = new Dictionary<string, string>();
     List<BakedGood> bakedGoods = new List<BakedGood>();
-    public Order(string title, string description, int bakedGoods)
+    public Order(string title, string description, params string[] list)
     {
       Date = DateTime.Now;
       Id = AssignId++;

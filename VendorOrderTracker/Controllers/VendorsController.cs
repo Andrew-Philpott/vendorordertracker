@@ -32,5 +32,14 @@ namespace VendorOrderTracker.Controllers
       Vendor vendor = Vendor.Find(id);
       return View(vendor);
     }
+
+    [HttpPost("/vendors/{vendorId}/orders")]
+    public ActionResult Create(int vendorId, string title, string description, params string[] list)
+    {
+      Order order = new Order(title, description, list);
+      Vendor vendor = Vendor.Find(vendorId);
+      vendor.AddOrder(order);
+      return RedirectToAction("Show");
+    }
   }
 }
