@@ -15,7 +15,7 @@ namespace VendorOrderTracker.Models
     public DateTime Date { get; set; }
     public Vendor Vendor { get; set; }
 
-    Dictionary<string, string> bakedGoods = new Dictionary<string, string>();
+    // Dictionary<string, string> bakedGoods = new Dictionary<string, string>();
     List<BakedGood> bakedGoods = new List<BakedGood>();
     public Order(string title, string description, int bakedGoods)
     {
@@ -23,7 +23,7 @@ namespace VendorOrderTracker.Models
       Id = AssignId++;
       Title = title;
       Description = description;
-      Price = Bread.CalculateCostForBakedGoods(bakedGoods);
+      // Price = Bread.CalculateCostForBakedGoods(bakedGoods);
       _orders.Add(this);
     }
     public static List<Order> GetAllOrders()

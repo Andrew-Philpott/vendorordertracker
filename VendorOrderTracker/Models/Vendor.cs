@@ -78,18 +78,18 @@ namespace VendorOrderTracker.Models
       // }
     }
 
-    public static string GenerateRandomBread()
-    {
-      Random random = new Random();
-      int randomNumber = random.Next(0, _breads.Count - 1);
-      return _breads[randomNumber];
-    }
-    public static string GenerateRandomPastry()
-    {
-      Random random = new Random();
-      int randomNumber = random.Next(0, _breads.Count - 1);
-      return _pastries[randomNumber];
-    }
+    // public static string GenerateRandomBread()
+    // {
+    //   Random random = new Random();
+    //   int randomNumber = random.Next(0, _breads.Count - 1);
+    //   return _breads[randomNumber];
+    // }
+    // public static string GenerateRandomPastry()
+    // {
+    //   Random random = new Random();
+    //   int randomNumber = random.Next(0, _breads.Count - 1);
+    //   return _pastries[randomNumber];
+    // }
 
 
     public static List<Vendor> GetAllVendors()
