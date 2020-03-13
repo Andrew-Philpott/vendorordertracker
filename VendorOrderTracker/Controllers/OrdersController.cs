@@ -31,5 +31,12 @@ namespace VendorOrderTracker.Controllers
       model.Add("order", order);
       return View(model);
     }
+
+    [HttpGet("/orders/{orderId}/delete")]
+    public ActionResult Delete(int orderId)
+    {
+      Order.Delete(orderId);
+      return RedirectToAction("Index");
+    }
   }
 }

@@ -7,23 +7,23 @@
 </div>
 
 @if (Model.Count == 0) {
-<h2>You don't have any vendors yet</h2>
+<h2>No orders have been placed with vendors yet.</h2>
 } else { 
 
 @foreach (Order order in Model) {
 <div class="vendor-order-container">
   <h2>@order.Title</h2>
-  <h2>@order.Date</h2>
+  <h2>Placed @order.Date</h2>
   <h2>@order.Description</h2>
-  <h2>@order.Price</h2>
-  @* <a href='/vendors/orders/@order.Id'>Vendor Details</a> *@
+  <h2><span>$</span>@order.Price</h2>
+  <a href='/orders/@order.Id/delete'>Delete Order</a>
 </div>
 }
 }
 
 <div class="links">
   <a href="/vendors/new">Add Vendor</a>
-  <a href="/vendors">View Vendors</a>
+  <a href="/vendors">View All Vendors</a>
   <a href="/">Home</a>
 </div>
 

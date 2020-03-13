@@ -23,7 +23,7 @@ namespace VendorOrderTracker.Controllers
     public ActionResult Create(string name, string description)
     {
       Vendor vendor = new Vendor(name, description);
-      return RedirectToAction("Index");
+      return RedirectToAction("Index", "home");
     }
 
     [HttpGet("/vendors/{id}")]
@@ -39,6 +39,15 @@ namespace VendorOrderTracker.Controllers
       Order order = new Order(title, description, list);
       Vendor vendor = Vendor.Find(vendorId);
       vendor.AddOrder(order);
+      return RedirectToAction("Show");
+    }
+
+    [HttpGet("/vendors/{vendorId}/orders/{orderId}/delete")]
+    public ActionResult Delete(int vendorId, int orderId)
+    {
+      Vendor vendor = Vendor.Find(vendorId);
+      vendor.DeleteOrder(orderId);
+      Order.Delete(orderId);
       return RedirectToAction("Show");
     }
   }

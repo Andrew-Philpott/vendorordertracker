@@ -30,7 +30,13 @@ namespace VendorOrderTracker.Models
     {
       return _orders;
     }
-
-
+    public static Order Find(int id)
+    {
+      return _orders.Find(x => x.Id == id);
+    }
+    public static void Delete(int id)
+    {
+      _orders.Remove(_orders.Find(x => x.Id == id));
+    }
   }
 }

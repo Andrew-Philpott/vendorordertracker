@@ -19,7 +19,11 @@
 a {
   margin-right: 1em;
 }
+.vendor-order-container a {
+  font-size: 2em;
+}
 .links {
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
   font-size: 1.5em;

@@ -112,5 +112,10 @@ namespace VendorOrderTracker.Models
     {
       _orders.Add(order);
     }
+
+    public void DeleteOrder(int id)
+    {
+      _orders.Remove(_orders.Find(x => x.Id == id));
+    }
   }
 }
