@@ -1,0 +1,14 @@
+@using VendorOrderTracker.Models;
+
+@{ Layout = "_Layout"; }
+
+<ol>
+@foreach (Order order in @Model.GetOrders())
+{
+  <li><a href='/vendors/@Model.Id/orders/@order.Id'>@order.Description</a></li>
+}
+</ol>
+GetOrders
+<p><a href='/vendors/@Model.Id/orders/new'>Add Order</a></p>
+<p><a href='/vendors'>View Vendors</a></p>
+<p><a href='/'>Home</a></p>

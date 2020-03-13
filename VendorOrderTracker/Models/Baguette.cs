@@ -1,4 +1,4 @@
-namespace PierresBakery.Models
+namespace VendorOrderTracker.Models
 {
   public class Baguette : Bread
   {
