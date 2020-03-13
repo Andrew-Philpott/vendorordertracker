@@ -6,6 +6,8 @@
 
 ## Description
 
+Application that allows a user to keep track of the orders placed with different vendors. User can add or remove vendors, and add or remove orders for each vendor.
+
 ## Specs
 
 - _Spec: Vendor constructor should be able to correctly make a vendor object._
