@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
 
-namespace ToDoList.Controllers
+namespace VendorOrderTracker.Controllers
 {
   public class HomeController : Controller
   {
