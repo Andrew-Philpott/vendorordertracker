@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 
 namespace VendorOrderTracker.Controllers
 {
@@ -27,8 +28,9 @@ namespace VendorOrderTracker.Controllers
     }
 
     [HttpPost]
-    public ActionResult New(Vendor vendor)
+    public ActionResult New(Vendor vendor, string arrayJson)
     {
+      List<string> array = JsonConvert.DeserializeObject<List<string>>(arrayJson);
       _db.Vendors.Add(vendor);
       _db.SaveChanges();
       return RedirectToAction("Index");

@@ -28,7 +28,7 @@ namespace VendorOrderTracker.Models
     // public List<Order> Orders { get; set; }
     public virtual ICollection<Order> Orders { get; set; }
     // public int PriceForGood { get; }
-    // public List<BakedGood> BakedGoods = new List<BakedGood>();
+    public List<BakedGood> BakedGoods = new List<BakedGood>();
 
 
 

@@ -22,14 +22,14 @@ namespace VendorOrderTracker.Controllers
       return View(model);
     }
 
-    public ActionResult Create()
+    public ActionResult New(int id)
     {
-      ViewBag.VendorId = new SelectList(_db.Vendors, "VendorId", "Name");
+      ViewBag.Vendor = _db.Vendors.FirstOrDefault(vendors => vendors.VendorId == id);
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Order order)
+    public ActionResult New(Order order)
     {
       _db.Orders.Add(order);
       _db.SaveChanges();

@@ -21,6 +21,8 @@
 }
 }
 <div class="links">
+  <p>@Html.ActionLink("Create new Order", "New", "Orders", new { id = @Model.VendorId}, null)</p>
+   @* <p>@Html.ActionLink("Create new Order", "New", "Orders")</p> *@
   <a href='/vendors/@Model.VendorId/orders/new'>Add Order</a>
   <a href='/vendors'>View Vendors</a>
   <a href='/orders'>View Orders</a>

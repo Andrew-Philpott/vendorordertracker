@@ -1,14 +1,37 @@
 @using VendorOrderTracker.Models; 
+@model VendorOrderTracker.Models.Order;
 
 @{ Layout = "_Layout"; 
 int bakedGoodCount = 0;
 }
 
 <div class="jumbotron">
-  <h1>@Model.Name</h1>
-  <h1>@Model.BakedGoods.Count</h1>
+  
+  <h1>@ViewBag.Vendor.Name</h1>
+  @* <h1>@Model.BakedGoods.Count</h1> *@
 </div>
 
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.VendorId, new{ Value = @ViewBag.Vendor.VendorId});
+    @Html.LabelFor(model => model.Title)
+    @Html.TextBoxFor(model => model.Title)
+    <br>
+    @Html.LabelFor(model => model.Description)
+    @Html.TextBoxFor(model => model.Description)
+
+    @foreach (BakedGood bakedGood in @ViewBag.Vendor)
+    {
+        
+    }
+    <br>
+    @* @Html.LabelFor(model => model.Vendor)
+    @Html.DropDownList("VendorId") *@
+
+    <br>
+    <input type="submit" value="Add new order" class="btn btn-default" />
+}
+@* 
 <h1>Place order</h1>
 <form action="/vendors/@Model.OrderIdId/orders" method="post">
   <input id="vendorId" name="vendorId" type="hidden" value="@Model.VendorId">
@@ -41,28 +64,21 @@ bakedGoodCount++;
 <div class="links">
   <a href="/vendors">View Vendors</a>
   <a href="/">Home</a>
-</div>
-@* 
-<script type="text/javascript">
-  function updateSpecimenHistories(){
-            $(".order-items").each(function () {
-                var ID = $(this).attr('id');
-                $.ajax({
-                    type: 'POST',
-                    data: "{ currentSpecimenID: " + ID + "}",
-                    dataType: "json",
-                    url: "SpecimenPriorityService.asmx/returnSpecimenHistory",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        $("#" + ID + "").find(".SpecimenHistory").empty();
-                        var history = data.d;
-                        $.each(history, function (index, history) {
-                          $("#"+ID +"").find("ul").append("<li>" + history.Time + " " + history.UserID + " " + history.Queue + " " + history.Status + " " + history.Comments + "</li>") 
-                        }
-                        )
-                        ;
-                    }
-                })
-            })
-        }
+</div> *@
+@* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+</script>
+<script>
+
+  $(document).ready(function() {
+     $("#baked-goods-count").on("click", function() {
+    let count = $("#number-input").val();
+    let form = $("#goods");
+    let bakedGoods = ``;
+    let i = 0;
+    for(i; i < count; i++) {
+      bakedGoods += `<div class="baked-good-item">Item ${i}:<input id=${"bakedGoods" + i} type="text" name="bakedGood" id="number-input"></input> </div><br>`;
+    }
+    return form.html(bakedGoods);
+  });
+});
 </script> *@
