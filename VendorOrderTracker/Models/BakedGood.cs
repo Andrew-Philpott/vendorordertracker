@@ -1,17 +1,19 @@
 namespace VendorOrderTracker.Models
 {
-  public abstract class BakedGood
+  public class BakedGood
   {
     public string Name { get; set; }
     public int BreadCount { get; set; }
+    public double Price { get; protected set; } = 0;
     public double PriceForOne { get; protected set; } = 0;
     public double PriceForDeal { get; protected set; } = 0;
     public int NumberOfBakedGoodsForDeal { get; protected set; } = 0;
     public int NumberOfBakedGoodsFreeFromDeal { get; protected set; } = 0;
 
     public BakedGood() { }
-    public BakedGood(string name)
+    public BakedGood(string name, double price)
     {
+      Price = price;
       Name = name;
     }
 

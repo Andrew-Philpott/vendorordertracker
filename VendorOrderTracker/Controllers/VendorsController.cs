@@ -20,9 +20,9 @@ namespace VendorOrderTracker.Controllers
     }
 
     [HttpPost("/vendors")]
-    public ActionResult Create(string name, string description)
+    public ActionResult Create(string name, string type, string description)
     {
-      Vendor vendor = new Vendor(name, description);
+      Vendor vendor = new Vendor(name, type, description);
       return RedirectToAction("Index", "home");
     }
 
@@ -33,10 +33,22 @@ namespace VendorOrderTracker.Controllers
       return View(vendor);
     }
 
+    // [HttpPost("/vendors/{vendorId}/orders")]
+    // public ActionResult Create(int vendorId, string title, string description, int[] bakedGoods)
+    // {
+    //   // int[] bakedGoodsCounts = new int[] { bakedGoods };
+    //   Order order = new Order(vendorId, title, description, bakedGoods);
+    //   Vendor vendor = Vendor.Find(vendorId);
+    //   vendor.AddOrder(order);
+    //   return RedirectToAction("Show");
+    // }
+
     [HttpPost("/vendors/{vendorId}/orders")]
-    public ActionResult Create(int vendorId, string title, string description, int bakedGood)
+    public ActionResult Create(int vendorId, string title, string description, string bakedGood0)
     {
-      Order order = new Order(vendorId, title, description, bakedGood);
+      int value = int.Parse(bakedGood0);
+      int[] bakedGoodsCounts = new int[] { value };
+      Order order = new Order(vendorId, title, description, bakedGoodsCounts);
       Vendor vendor = Vendor.Find(vendorId);
       vendor.AddOrder(order);
       return RedirectToAction("Show");

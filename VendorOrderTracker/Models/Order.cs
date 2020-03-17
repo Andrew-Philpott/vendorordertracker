@@ -11,22 +11,33 @@ namespace VendorOrderTracker.Models
     public int Id { get; }
     public string Title { get; set; }
     public string Description { get; set; }
-    public double Price { get; set; } = 0;
+    public double Price { get; set; }
     public string Date { get; set; }
     public int VendorId { get; }
+    public Vendor Vendor;
 
-    // Dictionary<string, string> bakedGoods = new Dictionary<string, string>();
     List<BakedGood> bakedGoods = new List<BakedGood>();
-    public Order(int vendorId, string title, string description, int BakedGood)
+    public Order(int vendorId, string title, string description, int[] bakedGoods)
     {
       VendorId = VendorId;
       Date = DateTime.Now.ToString("dd.MM.yyy");
       Id = AssignId++;
       Title = title;
       Description = description;
-      Vendor vendor = Vendor.Find(vendorId);
-      Price = (vendor.PriceForGood * BakedGood);
+      Vendor = Vendor.Find(vendorId);
+      Price = CalculatePrice(bakedGoods, Vendor);
       _orders.Add(this);
+    }
+
+    public double CalculatePrice(int[] counts, Vendor vendor)
+    {
+
+      double price = 0;
+      for (int i = 0; i < vendor.BakedGoods.Count; i++)
+      {
+        price += (vendor.BakedGoods[i].Price * counts[i]);
+      }
+      return price;
     }
     public static List<Order> GetAllOrders()
     {

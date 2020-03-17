@@ -35,20 +35,9 @@ namespace VendorOrderTracker.Controllers
     [HttpGet("/orders/{orderId}/delete")]
     public ActionResult Delete(int orderId)
     {
+      Order order = Order.Find(orderId);
+      Vendor.Find(order.VendorId).DeleteOrder(orderId);
       Order.Delete(orderId);
-      List<Vendor> vendors = Vendor.GetAllVendors();
-      for (int i = 0; i < vendors.Count; i++)
-      {
-        List<Order> orders = vendors[i].GetOrders();
-
-        for (int j = 0; j < orders.Count; j++)
-        {
-          if (orders[j].Id == orderId)
-          {
-            vendors[i].DeleteOrder(orderId);
-          }
-        }
-      }
       return RedirectToAction("Index");
     }
   }

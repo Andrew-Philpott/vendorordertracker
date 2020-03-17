@@ -1,9 +1,9 @@
 namespace VendorOrderTracker.Models
 {
-  public abstract class Bread : BakedGood
+  public class Bread : BakedGood
   {
     public Bread() { }
-    public Bread(string name) : base(name)
+    public Bread(string name, double price) : base(name, price)
     {
       PriceForOne = 5.00;
       PriceForDeal = 2 * PriceForOne;

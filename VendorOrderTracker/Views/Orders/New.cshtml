@@ -1,9 +1,12 @@
 @using VendorOrderTracker.Models; 
 
-@{ Layout = "_Layout"; }
+@{ Layout = "_Layout"; 
+int bakedGoodCount = 0;
+}
 
 <div class="jumbotron">
   <h1>@Model.Name</h1>
+  <h1>@Model.BakedGoods.Count</h1>
 </div>
 
 <h1>Place order</h1>
@@ -11,17 +14,27 @@
   <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
   <div class="form-group">
     <label for="title">Title: </label>
+    <br>
     <input id="title" name="title" type="text">
   </div>
   <div class="form-group">
-    <label for="description">Description: </label>
-    <input id="description" name="description" type="text">
+    <label for="description">Description of order:</label>
+    <br>
+    <textarea rows="4" cols="50" name="description">
+    </textarea>
   </div>
-<div class="form-group">
-
-    <label for="bakedGood"># of @Model.BakedGood.GetType().Name<span>s</span>:</label>
-    <input id="bakedGood" name="bakedGood" type="text">
-  </div>
+@foreach (BakedGood bakedGood in @Model.BakedGoods) {
+<div class="form-group order-items">
+    <label for="bakedGood(@bakedGoodCount)"># of @bakedGood.Name<span>s</span> at <span>$</span>@bakedGood.Price:</label>
+   <select id="bakedGood(@bakedGoodCount)" name="bakedGood@(bakedGoodCount)">
+  <option value="5" name="bakedGood@(bakedGoodCount)">5</option>
+  <option value="10" name="bakedGood@(bakedGoodCount)">10</option>
+  <option value="15" name="bakedGood@(bakedGoodCount)">15</option>
+  <option value="20" name="bakedGood@(bakedGoodCount)">20</option>
+</select>
+</div>
+bakedGoodCount++;
+}
 <button type="submit">Add Order</button>
 </form>
 
@@ -29,3 +42,27 @@
   <a href="/vendors">View Vendors</a>
   <a href="/">Home</a>
 </div>
+@* 
+<script type="text/javascript">
+  function updateSpecimenHistories(){
+            $(".order-items").each(function () {
+                var ID = $(this).attr('id');
+                $.ajax({
+                    type: 'POST',
+                    data: "{ currentSpecimenID: " + ID + "}",
+                    dataType: "json",
+                    url: "SpecimenPriorityService.asmx/returnSpecimenHistory",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $("#" + ID + "").find(".SpecimenHistory").empty();
+                        var history = data.d;
+                        $.each(history, function (index, history) {
+                          $("#"+ID +"").find("ul").append("<li>" + history.Time + " " + history.UserID + " " + history.Queue + " " + history.Status + " " + history.Comments + "</li>") 
+                        }
+                        )
+                        ;
+                    }
+                })
+            })
+        }
+</script> *@

@@ -1,3 +1,5 @@
+@using VendorOrderTracker.Models; 
+
 @{ Layout = "_Layout"; }
 
 <div class="jumbotron">
@@ -7,13 +9,21 @@
 <form action="/vendors" method="post">
   <div class="form-group">
     <label for="name">Name:</label>
+    <br>
     <input id="name" name="name" type="text">
-  </div>
+  </div> 
+  <br>
   <div class="form-group">
-    <label for="description">Description</label>
-    <input id="description" name="description" type="text">
-    <p>Must be "bread" or "pastry"</p>
+    <label for="description">Vendor's description:</label>
+    <br>
+    <textarea rows="4" cols="50" name="description">
+    </textarea>
   </div>
+  <br>
+   <input type="radio" value="bread" id="bread" name="type"/>Bread<br/>
+    <input type="radio" value="pastry" id="pastry" name="type"/>Pastry<br/>
+    <input type="radio" value="both" id="both" name="type"/>Bread & Pastry<br/>
+    <br>
   <button type="submit">Add Vendor</button>
 </form>
 
