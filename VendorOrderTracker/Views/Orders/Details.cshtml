@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@using VendorOrderTracker.Models;
+@model VendorOrderTracker.Models.Order;
+
+<h2>Order details</h2>
+<hr />
+<div id="order-details">
+ <h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</h3>
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+</div>
+<h3>@Html.DisplayNameFor(model => model.Date): @Html.DisplayFor(model => model.Date)</h3>
+<h3>@Html.DisplayNameFor(model => model.Price): @Html.DisplayFor(model => model.Price)</h3>
+</div>
+
+<p>@Html.ActionLink("Back to Orders", "Index")</p>
+<p>@Html.ActionLink("Edit Order", "Edit", new { id = Model.OrderId })</p>
+<p>@Html.ActionLink("Delete Order", "Delete", new { id = Model.OrderId })</p>

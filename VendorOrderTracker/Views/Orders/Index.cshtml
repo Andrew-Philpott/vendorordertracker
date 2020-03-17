@@ -1,4 +1,5 @@
-@* @using VendorOrderTracker.Models; 
+@using VendorOrderTracker.Models; 
+@model List<VendorOrderTracker.Models.Order>;
 
 @{ Layout = "_Layout"; }
 
@@ -16,7 +17,7 @@
   <h2>Placed @order.Date</h2>
   <h2>@order.Description</h2>
   <h2><span>$</span>@order.Price</h2>
-  <a href='/orders/@order.Id/delete'>Delete Order</a>
+  <a href='/orders/@order.OrderId/delete'>Delete Order</a>
 </div>
 }
 }
@@ -26,4 +27,4 @@
   <a href="/vendors">View All Vendors</a>
   <a href="/">Home</a>
 </div>
- *@
+

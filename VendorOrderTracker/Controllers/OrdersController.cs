@@ -22,38 +22,54 @@ namespace VendorOrderTracker.Controllers
       return View(model);
     }
 
-    // [HttpGet("/orders")]
-    // public ActionResult Index()
-    // {
-    //   List<Order> orders = Order.GetAllOrders();
-    //   return View(orders);
-    // }
+    public ActionResult Create()
+    {
+      ViewBag.VendorId = new SelectList(_db.Vendors, "VendorId", "Name");
+      return View();
+    }
 
-    // [HttpGet("/vendors/{vendorId}/orders/new")]
-    // public ActionResult New(int vendorId)
-    // {
-    //   Vendor vendor = Vendor.Find(vendorId);
-    //   return View(vendor);
-    // }
+    [HttpPost]
+    public ActionResult Create(Order order)
+    {
+      _db.Orders.Add(order);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
 
-    // [HttpGet("/vendors/{vendorId}/orders/{orderId}")]
-    // public ActionResult Show(int vendorId, int orderId)
-    // {
-    //   Vendor vendor = Vendor.Find(vendorId);
-    //   Order order = vendor.GetOrder(orderId);
-    //   Dictionary<string, object> model = new Dictionary<string, object>();
-    //   model.Add("vendor", vendor);
-    //   model.Add("order", order);
-    //   return View(model);
-    // }
+    public ActionResult Details(int id)
+    {
+      Order order = _db.Orders.FirstOrDefault(orders => orders.OrderId == id);
+      return View(order);
+    }
 
-    // [HttpGet("/orders/{orderId}/delete")]
-    // public ActionResult Delete(int orderId)
-    // {
-    //   Order order = Order.Find(orderId);
-    //   Vendor.Find(order.VendorId).DeleteOrder(orderId);
-    //   Order.Delete(orderId);
-    //   return RedirectToAction("Index");
-    // }
+    public ActionResult Edit(int id)
+    {
+      var order = _db.Orders.FirstOrDefault(orders => orders.OrderId == id);
+      ViewBag.VendorId = new SelectList(_db.Orders, "VendorId", "Name");
+      return View(order);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Order order)
+    {
+      _db.Entry(order).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      var order = _db.Orders.FirstOrDefault(items => items.OrderId == id);
+      return View(order);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var order = _db.Orders.FirstOrDefault(orders => orders.OrderId == id);
+      _db.Orders.Remove(order);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
