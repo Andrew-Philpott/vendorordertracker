@@ -2,6 +2,9 @@ namespace VendorOrderTracker.Models
 {
   public class BakedGood
   {
+    // public int BakedGoodId { get; set; }
+    // public string Name { get; set; }
+    // public double Price { get; set; }
     public string Name { get; set; }
     public int BreadCount { get; set; }
     public double Price { get; protected set; } = 0;

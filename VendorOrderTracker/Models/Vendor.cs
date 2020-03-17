@@ -11,7 +11,7 @@ namespace VendorOrderTracker.Models
     private static List<Vendor> _vendors = new List<Vendor>();
     private static int AssignId { get; set; }
 
-    public int Id { get; }
+    public int Id { get; set; }
     private List<Order> _orders = new List<Order>();
     public string Name { get; }
     public string Description { get; }
