@@ -1,4 +1,5 @@
 @using VendorOrderTracker.Models; 
+@model List<VendorOrderTracker.Models.Vendor>;
 
 @{ Layout = "_Layout"; }
 
@@ -6,7 +7,7 @@
   <h1>Vendors</h1>
 </div>
 
-@if(Model.Count == 0){
+@* @if(Model.Count == 0){
   <h2>You don't have any vendors yet</h2>
 } else {
 
@@ -17,7 +18,7 @@
   <a class="btn btn-primary" href="/vendors/@vendor.VendorId">View Orders</a>
 </div>
 }
-}
+} *@
 <div class="links">
   <a href="/vendors/new">Add Vendor</a>
   <a href="/orders">View All Orders</a>

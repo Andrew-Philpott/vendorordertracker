@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using VendorOrderTracker.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace VendorOrderTracker.Controllers
 {
@@ -15,10 +16,23 @@ namespace VendorOrderTracker.Controllers
       _db = db;
     }
 
+    [HttpGet]
     public ActionResult Index()
     {
       List<Vendor> model = _db.Vendors.ToList();
       return View(model);
+    }
+    public ActionResult New()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult New(Vendor vendor)
+    {
+      _db.Vendors.Add(vendor);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
     // [HttpGet("/vendors")]
     // public ActionResult Index()

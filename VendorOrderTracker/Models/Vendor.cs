@@ -5,6 +5,10 @@ namespace VendorOrderTracker.Models
 {
   public class Vendor
   {
+    // public Vendor()
+    // {
+    //   this.Orders = new HashSet<Order>();
+    // }
     // private static string[] Breads = new string[] { "baguette", "challah", "brioche", "cornbread", "focaccia", "pumpernickel", "rye" };
 
     // private static string[] Pastries = new string[] { "eclair", "bearclaw", "baklava", "danish", "macaron", "strudel" };
@@ -12,6 +16,7 @@ namespace VendorOrderTracker.Models
     // private static int AssignId { get; set; }
     // private List<Order> _orders = new List<Order>();
 
+    // [Key]
     public int VendorId { get; set; }
     public string Name { get; }
     public string Description { get; }
@@ -19,10 +24,7 @@ namespace VendorOrderTracker.Models
     // public int PriceForGood { get; }
     // public List<BakedGood> BakedGoods = new List<BakedGood>();
 
-    public Vendor()
-    {
-      this.Orders = new HashSet<Order>();
-    }
+
 
     // public Vendor(string name, string type, string description)
     // {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace VendorOrderTracker.Models
 {
@@ -7,16 +8,18 @@ namespace VendorOrderTracker.Models
   {
     // private static List<Order> _orders = new List<Order>();
     // private static int AssignId { get; set; }
+    [Key]
     public int OrderId { get; }
     public string Title { get; set; }
     public string Description { get; set; }
     public double Price { get; set; }
     public string Date { get; set; }
+    public int VendorId { get; set; }
     public virtual Vendor Vendor { get; set; }
     // public int VendorId { get; }
     // public Vendor Vendor;
 
-    List<BakedGood> bakedGoods = new List<BakedGood>();
+    // List<BakedGood> bakedGoods = new List<BakedGood>();
     // public Order(int vendorId, string title, string description, int[] bakedGoods)
     // {
     //   VendorId = VendorId;
