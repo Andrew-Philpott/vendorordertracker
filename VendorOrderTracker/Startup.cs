@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using VendorOrderTracker.Models;
 
 namespace VendorOrderTracker
 {
@@ -12,22 +14,26 @@ namespace VendorOrderTracker
     {
       var builder = new ConfigurationBuilder()
           .SetBasePath(env.ContentRootPath)
-          .AddEnvironmentVariables();
+          .AddJsonFile("appsettings.json");
       Configuration = builder.Build();
     }
 
-    public IConfigurationRoot Configuration { get; }
+    public IConfigurationRoot Configuration { get; set; }
 
     public void ConfigureServices(IServiceCollection services)
     {
       services.AddMvc();
+
+      services.AddEntityFrameworkSqlServer()
+        .AddDbContext<TrackerContext>(options => options
+        .UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
     }
 
     public void Configure(IApplicationBuilder app)
     {
-      app.UseDeveloperExceptionPage();
-
       app.UseStaticFiles();
+
+      app.UseDeveloperExceptionPage();
 
       app.UseMvc(routes =>
       {
@@ -40,7 +46,6 @@ namespace VendorOrderTracker
       {
         await context.Response.WriteAsync("Something went wrong!");
       });
-
     }
   }
 }
