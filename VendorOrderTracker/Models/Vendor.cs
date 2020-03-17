@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System;
 
 namespace VendorOrderTracker.Models
 {
@@ -16,10 +15,17 @@ namespace VendorOrderTracker.Models
     // private static int AssignId { get; set; }
     // private List<Order> _orders = new List<Order>();
 
+    public Vendor()
+    {
+      this.Orders = new HashSet<Order>();
+    }
     // [Key]
     public int VendorId { get; set; }
-    public string Name { get; }
-    public string Description { get; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public string Type { get; set; }
+
+    // public List<Order> Orders { get; set; }
     public virtual ICollection<Order> Orders { get; set; }
     // public int PriceForGood { get; }
     // public List<BakedGood> BakedGoods = new List<BakedGood>();

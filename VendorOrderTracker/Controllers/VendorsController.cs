@@ -3,12 +3,12 @@ using VendorOrderTracker.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace VendorOrderTracker.Controllers
 {
   public class VendorsController : Controller
   {
-
     private readonly TrackerContext _db;
 
     public VendorsController(TrackerContext db)
@@ -16,7 +16,6 @@ namespace VendorOrderTracker.Controllers
       _db = db;
     }
 
-    [HttpGet]
     public ActionResult Index()
     {
       List<Vendor> model = _db.Vendors.ToList();
@@ -34,12 +33,12 @@ namespace VendorOrderTracker.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    // [HttpGet("/vendors")]
-    // public ActionResult Index()
-    // {
-    //   List<Vendor> vendors = Vendor.GetAllVendors();
-    //   return View(vendors);
-    // }
+
+    public ActionResult Details(int id)
+    {
+      Vendor vendor = _db.Vendors.FirstOrDefault(vendors => vendors.VendorId == id);
+      return View(vendor);
+    }
 
     // [HttpGet("/vendors/new")]
     // public ActionResult New()
@@ -54,12 +53,7 @@ namespace VendorOrderTracker.Controllers
     //   return RedirectToAction("Index", "home");
     // }
 
-    // [HttpGet("/vendors/{id}")]
-    // public ActionResult Show(int id)
-    // {
-    //   Vendor vendor = Vendor.Find(id);
-    //   return View(vendor);
-    // }
+
 
     // // [HttpPost("/vendors/{vendorId}/orders")]
     // // public ActionResult Create(int vendorId, string title, string description, int[] bakedGoods)

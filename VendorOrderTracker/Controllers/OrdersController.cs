@@ -1,12 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using VendorOrderTracker.Models;
-
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace VendorOrderTracker.Controllers
 {
   public class OrdersController : Controller
   {
+    private readonly TrackerContext _db;
+
+    public OrdersController(TrackerContext db)
+    {
+      _db = db;
+    }
+
+    public ActionResult Index()
+    {
+      List<Order> model = _db.Orders.ToList();
+      return View(model);
+    }
+
     // [HttpGet("/orders")]
     // public ActionResult Index()
     // {

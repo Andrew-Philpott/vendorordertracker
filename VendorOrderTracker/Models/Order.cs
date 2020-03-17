@@ -1,21 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
 namespace VendorOrderTracker.Models
 {
   public class Order
   {
-    // private static List<Order> _orders = new List<Order>();
-    // private static int AssignId { get; set; }
-    [Key]
-    public int OrderId { get; }
+    public int OrderId { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public double Price { get; set; }
     public string Date { get; set; }
     public int VendorId { get; set; }
     public virtual Vendor Vendor { get; set; }
+
     // public int VendorId { get; }
     // public Vendor Vendor;
 

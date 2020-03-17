@@ -3,11 +3,16 @@
   border: 2px solid red;
   position: relative;
 }
-.vendor-container a {
+.vendor-container .view-orders {
   width: 20%;
   position: absolute;
   right: 0px;
   bottom: 0px;
+}
+.vendor-container .hello {
+  float: left;
+  color: black;
+  font-size: 2em;
 }
 .vendor-order-container {
   display: flex;

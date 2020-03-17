@@ -1,14 +1,15 @@
 @using VendorOrderTracker.Models;
+@model VendorOrderTracker.Models.Vendor;
 
 @{ Layout = "_Layout"; }
 
-@if (Model.GetOrders().Count == 0) {
+@if (Model.Orders.Count == 0) {
   <h2>No orders have been placed yet with @Model.Name</h2>
   <a href='/vendors/@Model.VendorId/delete'>Delete Vendor</a>
 } else {
   <h1>@Model.Name</h1>
   <a href='/vendors/@Model.VendorId/delete'>Delete Vendor</a>
-@foreach (Order order in Model.GetOrders())
+@foreach (Order order in Model.Orders)
 {
 <div class="vendor-order-container">
   <h2>@order.Title</h2>
@@ -19,6 +20,16 @@
 </div>
 }
 }
+@* @{
+  Layout = "_Layout";
+}
+
+@model ToDoList.Models.Item *@
+
+@* <h2>Item Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)<h3>
+<p>@Html.ActionLink("Back to list", "Index")</p> *@
 
 <div class="links">
   <a href='/vendors/@Model.VendorId/orders/new'>Add Order</a>

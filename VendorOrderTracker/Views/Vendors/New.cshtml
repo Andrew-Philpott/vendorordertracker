@@ -1,4 +1,4 @@
-@using VendorOrderTracker.Models; 
+@model VendorOrderTracker.Models.Vendor;
 
 @{ Layout = "_Layout"; }
 
@@ -6,26 +6,19 @@
   <h2>Add a vendor</h2>
 </div>
 
-<form action="/vendors" method="post">
-  <div class="form-group">
-    <label for="name">Name:</label>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
     <br>
-    <input id="name" name="name" type="text">
-  </div> 
-  <br>
-  <div class="form-group">
-    <label for="description">Vendor's description:</label>
+    @Html.LabelFor(model => model.Description)
+    @Html.TextBoxFor(model => model.Description)
     <br>
-    <textarea rows="4" cols="50" name="description">
-    </textarea>
-  </div>
-  <br>
-   <input type="radio" value="bread" id="bread" name="type"/>Bread<br/>
-    <input type="radio" value="pastry" id="pastry" name="type"/>Pastry<br/>
-    <input type="radio" value="both" id="both" name="type"/>Bread & Pastry<br/>
+    @Html.LabelFor(model => model.Type)
+    @Html.TextBoxFor(model => model.Type)
     <br>
-  <button type="submit">Add Vendor</button>
-</form>
+    <input type="submit" value="Add new vendor" class="btn btn-default" />
+}
 
 <div class="links">
   <a href="/vendors">View Vendors</a>
