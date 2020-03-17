@@ -4,7 +4,8 @@ namespace VendorOrderTracker.Models
 {
   public class TrackerContext : DbContext
   {
-    public DbSet<Vendor> Vendors { get; set; }
+    public virtual DbSet<Vendor> Vendors { get; set; }
+    public DbSet<Order> Orders { get; set; }
     // public virtual DbSet<Category> Categories { get; set; }
     // public DbSet<Item> Items { get; set; }
 

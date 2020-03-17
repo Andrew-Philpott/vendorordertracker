@@ -10,8 +10,8 @@ int bakedGoodCount = 0;
 </div>
 
 <h1>Place order</h1>
-<form action="/vendors/@Model.Id/orders" method="post">
-  <input id="vendorId" name="vendorId" type="hidden" value="@Model.Id">
+<form action="/vendors/@Model.OrderIdId/orders" method="post">
+  <input id="vendorId" name="vendorId" type="hidden" value="@Model.VendorId">
   <div class="form-group">
     <label for="title">Title: </label>
     <br>

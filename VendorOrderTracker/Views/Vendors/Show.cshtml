@@ -4,24 +4,24 @@
 
 @if (Model.GetOrders().Count == 0) {
   <h2>No orders have been placed yet with @Model.Name</h2>
-  <a href='/vendors/@Model.Id/delete'>Delete Vendor</a>
+  <a href='/vendors/@Model.VendorId/delete'>Delete Vendor</a>
 } else {
   <h1>@Model.Name</h1>
-  <a href='/vendors/@Model.Id/delete'>Delete Vendor</a>
+  <a href='/vendors/@Model.VendorId/delete'>Delete Vendor</a>
 @foreach (Order order in Model.GetOrders())
 {
 <div class="vendor-order-container">
   <h2>@order.Title</h2>
   <h2>@order.Date</h2>
   <h2><span>$</span>@order.Price</h2>
-  <a href='/vendors/@Model.Id/orders/@order.Id'>See Details</a>
-  <a href='/vendors/@Model.Id/orders/@order.Id/delete'>Delete Order</a>
+  <a href='/vendors/@Model.VendorId/orders/@order.OrderId'>See Details</a>
+  <a href='/vendors/@Model.VendorId/orders/@order.OrderId/delete'>Delete Order</a>
 </div>
 }
 }
 
 <div class="links">
-  <a href='/vendors/@Model.Id/orders/new'>Add Order</a>
+  <a href='/vendors/@Model.VendorId/orders/new'>Add Order</a>
   <a href='/vendors'>View Vendors</a>
   <a href='/orders'>View Orders</a>
   <a href='/'>Home</a>
