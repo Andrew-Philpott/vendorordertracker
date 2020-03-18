@@ -4,6 +4,10 @@
 
 #### By **Andrew Philpott**
 
+## Summary
+
+Updated project to start using entity. Struggled with figuring out how to send a dynamically created form to a route. Planning on extending this project to be a resource for viewing orders, employees, inventory.
+
 ## Description
 
 Application that allows a user to keep track of the orders placed with different vendors. User can add or remove vendors, and add or remove orders for each vendor.
